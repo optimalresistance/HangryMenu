@@ -14,18 +14,24 @@ html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,
 .site-header .sub{color:var(--muted);margin:.25rem 0 0}
 .container{max-width:1100px;margin:0 auto;padding:0 16px 48px}
 h2{margin:18px 0}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:16px;
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start; /* 👈 important so neighbors don't stretch */
 }
+
 .card{
   background:var(--card);
   border:1px solid #1e222b;
   border-radius:16px;
   box-shadow:0 10px 24px rgba(0,0,0,.25);
   overflow:hidden;
+
+  flex: 1 1 260px;   /* min width per card */
+  max-width: 360px;  /* optional, keeps them from getting too wide */
 }
+
 .card__header{
   margin:0;
   padding:14px 16px;
@@ -94,3 +100,46 @@ footer small{color:var(--muted)}
 .dual-links a:hover {
   background: rgba(106, 230, 179, 0.15);
 }
+
+/* Section wrappers */
+.section {
+  margin-bottom: 32px;
+  padding: 12px 0;
+}
+
+/* Base style for section headings */
+.section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  border-bottom: 2px solid #2a2f3a;
+  padding-bottom: 4px;
+}
+
+/* Dinner – teal / green */
+.section--dinner h2 {
+  border-bottom-color: #6ae6b3;
+  color: #6ae6b3;
+}
+.section--dinner .card {
+  border-top: 3px solid rgba(106, 230, 179, 0.4);
+}
+
+/* Dessert – soft rose */
+.section--dessert h2 {
+  border-bottom-color: #f5a3c7;
+  color: #f5a3c7;
+}
+.section--dessert .card {
+  border-top: 3px solid rgba(245, 163, 199, 0.4);
+}
+
+/* Shopping List – soft blue */
+.section--shopping h2 {
+  border-bottom-color: #7ab8ff;
+  color: #7ab8ff;
+}
+.section--shopping .card {
+  border-top: 3px solid rgba(122, 184, 255, 0.4);
+}
+
