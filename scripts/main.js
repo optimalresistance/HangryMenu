@@ -36,15 +36,26 @@ async function fetchHTML(path) {
 function attachToggle(card) {
   const header = card.querySelector('.card__header');
   if (!header) return;
-  header.addEventListener('click', () => card.classList.toggle('open'));
+
+  function openOnlyThisCard() {
+    // close all other open cards
+    document.querySelectorAll('.card.open').forEach(c => {
+      if (c !== card) c.classList.remove('open');
+    });
+    // open this one (or close it if it was open)
+    card.classList.toggle('open');
+  }
+
+  header.addEventListener('click', openOnlyThisCard);
   header.setAttribute('tabindex', '0');
   header.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      card.classList.toggle('open');
+      openOnlyThisCard();
     }
   });
 }
+
 function clearGrid(id) {
   const el = document.getElementById(id);
   while (el.firstChild) el.removeChild(el.firstChild);
