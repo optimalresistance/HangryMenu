@@ -1,0 +1,40 @@
+Add a new dinner recipe (step-by-step)
+
+In the dinner/ folder, create a new file like butter-chicken.html using this structure:
+
+<h3 class="card__header">Butter Chicken <span class="chev">▾</span></h3>
+<div class="card__body">
+  <div class="section-title">Ingredients</div>
+  <ul>
+    <li>...</li>
+  </ul>
+
+  <div class="section-title">Recipe</div>
+  <ol>
+    <li>...</li>
+  </ol>
+
+  <span class="badge">Spicy</span>
+  <span class="badge">30 min</span>
+</div>
+
+
+Open dinner/recipes.json and add your new filename to the "files" list, for example:
+
+{
+  "files": [
+    "spaghetti-aglio-olio.html",
+    "sheet-pan-lemon-chicken.html",
+    "butter-chicken.html"
+  ]
+}
+
+
+Refresh your browser. Your new card appears under Dinner.
+(Do the exact same thing in dessert/ + dessert/recipes.json for desserts.)
+
+Edit or reorder
+
+To edit a dish later, just open its individual HTML file and change ingredients/steps.
+
+To reorder dishes, rearrange the filenames in the relevant recipes.json.
